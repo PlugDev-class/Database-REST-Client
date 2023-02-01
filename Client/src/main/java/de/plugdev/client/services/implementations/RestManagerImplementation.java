@@ -17,6 +17,7 @@ import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.util.UUID;
 
 public class RestManagerImplementation implements IRestManager {
@@ -49,41 +50,63 @@ public class RestManagerImplementation implements IRestManager {
     @SneakyThrows
     @Override
     public RestResponse get(String path) {
-        final Response execute = CLIENT.newCall(new Request.Builder()
+        final Call authorization = CLIENT.newCall(new Request.Builder()
                 .url(baseURL + path)
                 .header("Authorization", webApiKey != null ? webApiKey : "")
-                .get().build()).execute();
-        return getRestResponse(execute);
+                .get().build());
+
+        try {
+            return getRestResponse(authorization.execute());
+        } catch (ConnectException nameless) {
+            return new RestResponse(UUID.randomUUID(), ResponseCode.CLIENT_FAILURE, (short) 408, "Client " +
+                    "Timeout");
+        }
+
     }
 
     @SneakyThrows
     @Override
     public RestResponse post(String path, FormBody.Builder builder) {
-        final Response execute = CLIENT.newCall(new Request.Builder()
+        final Call authorization = CLIENT.newCall(new Request.Builder()
                 .url(baseURL + path)
                 .addHeader("Authorization", webApiKey != null ? webApiKey : "")
-                .post(builder.build()).build()).execute();
-        return getRestResponse(execute);
+                .post(builder.build()).build());
+        try {
+            return getRestResponse(authorization.execute());
+        } catch (ConnectException nameless) {
+            return new RestResponse(UUID.randomUUID(), ResponseCode.CLIENT_FAILURE, (short) 408, "Client " +
+                    "Timeout");
+        }
     }
 
     @SneakyThrows
     @Override
     public RestResponse patch(String path, FormBody.Builder builder) {
-        final Response execute = CLIENT.newCall(new Request.Builder()
+        final Call authorization = CLIENT.newCall(new Request.Builder()
                 .url(baseURL + path)
                 .addHeader("Authorization", webApiKey != null ? webApiKey : "")
-                .patch(builder.build()).build()).execute();
-        return getRestResponse(execute);
+                .patch(builder.build()).build());
+        try {
+            return getRestResponse(authorization.execute());
+        } catch (ConnectException nameless) {
+            return new RestResponse(UUID.randomUUID(), ResponseCode.CLIENT_FAILURE, (short) 408, "Client " +
+                    "Timeout");
+        }
     }
 
     @SneakyThrows
     @Override
     public RestResponse delete(String path, FormBody.Builder builder) {
-        final Response execute = CLIENT.newCall(new Request.Builder()
+        final Request.Builder authorization = new Request.Builder()
                 .url(baseURL + path)
                 .addHeader("Authorization", webApiKey != null ? webApiKey : "")
-                .delete(builder.build()).build()).execute();
-        return getRestResponse(execute);
+                .delete(builder.build());
+        try {
+            return getRestResponse(CLIENT.newCall(authorization.build()).execute());
+        } catch (ConnectException nameless) {
+            return new RestResponse(UUID.randomUUID(), ResponseCode.CLIENT_FAILURE, (short) 408, "Client " +
+                    "Timeout");
+        }
     }
 
     @NotNull

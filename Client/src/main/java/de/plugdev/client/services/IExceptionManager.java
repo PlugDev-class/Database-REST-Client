@@ -1,6 +1,6 @@
 package de.plugdev.client.services;
 
-import de.plugdev.client.modality.ExceptionSevernis;
+import de.plugdev.client.models.ExceptionSevernis;
 import de.plugdev.services.IService;
 
 public interface IExceptionManager extends IService {

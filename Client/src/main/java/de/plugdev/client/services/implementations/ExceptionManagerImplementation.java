@@ -6,7 +6,7 @@ package de.plugdev.client.services.implementations;
  * Alle Rechte vorbehalten. @2023
  */
 
-import de.plugdev.client.modality.ExceptionSevernis;
+import de.plugdev.client.models.ExceptionSevernis;
 import de.plugdev.client.models.ExceptionResult;
 import de.plugdev.client.services.IExceptionManager;
 

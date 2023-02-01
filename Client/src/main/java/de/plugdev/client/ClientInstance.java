@@ -14,7 +14,6 @@ import de.plugdev.services.LogManagerImplementation;
 import de.plugdev.services.ServiceManager;
 
 public class ClientInstance {
-
     @Deprecated
     public static void main(String[] args) {
         preInitMasterBranchSynchronously();

@@ -1,0 +1,17 @@
+{
+  "databaseSqlDriver": "com.mysql.cj.jdbc.Driver",
+  "restVersion": "v1",
+  "author": "PlugDev",
+  "securityEncryptionUsername": "yourUserOrPassword",
+  "adminBackupPassword": "veryImportantPassword",
+  "adminBackupAccountEnabled": false,
+  "restCredentialsWebApiKey": "yourRestApiKey",
+  "restBaseUrl": "https://localhost/restServer",
+  "databaseTable": "yourTable",
+  "databasePassword": "yourPassword",
+  "adminBackupUsername": "admin",
+  "databaseUsername": "admin",
+  "uniqueId": "60ee32e6-c97d-4372-b763-433483c6fb8b",
+  "databaseUrl": "jdbc:mysql://localhost:3306",
+  "Testkey": "ImATestValue"
+}

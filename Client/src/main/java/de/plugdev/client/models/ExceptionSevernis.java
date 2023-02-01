@@ -1,4 +1,4 @@
-package de.plugdev.client.modality;
+package de.plugdev.client.models;
 
 public enum ExceptionSevernis {
 

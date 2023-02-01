@@ -7,7 +7,6 @@ package de.plugdev.client.models;
  * Alle Rechte vorbehalten. @2023
  */
 
-import de.plugdev.client.modality.ExceptionSevernis;
 import lombok.Data;
 
 import java.util.UUID;
