@@ -41,7 +41,7 @@ public class ExceptionManagerImplementation implements Thread.UncaughtExceptionH
     public void disable() {}
 
     @Override
-    public void uncaughtException(Thread t, Throwable e) {
-        addException((Exception) e, ExceptionSevernis.MEDIUM);
+    public void uncaughtException(Thread thread, Throwable exception) {
+        addException(new Exception(exception), ExceptionSevernis.MEDIUM);
     }
 }

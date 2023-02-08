@@ -9,8 +9,7 @@ package de.plugdev.client.services.implementations;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import de.plugdev.client.services.ISettingsLoader;
-import de.plugdev.client.services.ISettingsManager;
+import de.plugdev.client.services.ISettings;
 import de.plugdev.services.ILog;
 import de.plugdev.services.ServiceManager;
 import lombok.SneakyThrows;
@@ -23,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class SettingsManagerImplementation implements ISettingsManager, ISettingsLoader {
+public class SettingsManagerImplementation implements ISettings {
 
     private boolean alreadyInitialized = false;
 

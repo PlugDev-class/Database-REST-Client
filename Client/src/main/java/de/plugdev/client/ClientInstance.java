@@ -23,13 +23,11 @@ public class ClientInstance {
         ServiceManager.add(ILog.class, new LogManagerImplementation());
         ServiceManager.enable(ILog.class);
 
-        final SettingsManagerImplementation service = new SettingsManagerImplementation();
-        ServiceManager.add(ISettingsLoader.class, service);
-        ServiceManager.add(ISettingsManager.class, service);
-
+        ServiceManager.add(ISettings.class, new SettingsManagerImplementation());
         ServiceManager.add(IDatabaseManager.class, new DatabaseManagerImplementation());
         ServiceManager.add(IRestManager.class, new RestManagerImplementation());
         ServiceManager.add(ISecurityManager.class, new SecurityManagerImplementation());
+        ServiceManager.add(IExceptionManager.class, new ExceptionManagerImplementation());
 
         ServiceManager.enableAll();
     }

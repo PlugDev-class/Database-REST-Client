@@ -20,7 +20,7 @@ public class SecurityTest1 {
          * some unpredictable bugs cursing around this
          */
 
-        ClientInstance.main(null); // Running main without any arguments
+        ClientInstance.preInitMasterBranchSynchronously();
 
 
         long start = System.currentTimeMillis();

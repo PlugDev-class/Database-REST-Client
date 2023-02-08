@@ -8,8 +8,7 @@ package de.plugdev.client.services.implementations;
  */
 
 import de.plugdev.client.services.IDatabaseManager;
-import de.plugdev.client.services.ISettingsLoader;
-import de.plugdev.client.services.ISettingsManager;
+import de.plugdev.client.services.ISettings;
 import de.plugdev.services.ILog;
 import de.plugdev.services.ServiceManager;
 import lombok.SneakyThrows;
@@ -32,7 +31,8 @@ public class DatabaseManagerImplementation implements IDatabaseManager {
     @SneakyThrows
     @Override
     public void disconnect() {
-        this.connection.close();
+        if(this.connection != null)
+            this.connection.close();
         ((ILog) ServiceManager.get(ILog.class)).log("Service SQL is now disconnected.");
     }
 
@@ -44,11 +44,12 @@ public class DatabaseManagerImplementation implements IDatabaseManager {
     @SneakyThrows
     @Override
     public void enable() {
-        if(!ServiceManager.enabled(ISettingsLoader.class)) {
-            ((ILog) ServiceManager.get(ILog.class)).log("Couldn't get ISettingsLoader-Instance in Cache.", Severity.WARNING);
+        if(!ServiceManager.enabled(ISettings.class)) {
+            ((ILog) ServiceManager.get(ILog.class)).log("Couldn't get ISettingsLoader-Instance in Cache.",
+                    Severity.WARNING);
             return;
         }
-        Class.forName(((ISettingsManager) ServiceManager.get(ISettingsManager.class)).getValue("databaseSqlDriver"));
+        Class.forName(((ISettings) ServiceManager.get(ISettings.class)).getValue("databaseSqlDriver"));
     }
 
     @Override

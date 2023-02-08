@@ -8,8 +8,7 @@ package de.plugdev.testCases;
  */
 
 import de.plugdev.client.ClientInstance;
-import de.plugdev.client.services.ISettingsLoader;
-import de.plugdev.client.services.ISettingsManager;
+import de.plugdev.client.services.ISettings;
 import de.plugdev.services.ServiceManager;
 
 public class FileWritingTestCase1 {
@@ -22,10 +21,10 @@ public class FileWritingTestCase1 {
          */
 
         // Part 1 | default master init  < this is equivalent with the default execution.
-        ClientInstance.main(null); // Running main without any arguments
+        ClientInstance.preInitMasterBranchSynchronously();
 
         // Part 2 | read default values from standardized keys
-        final ISettingsManager settingsManager = ServiceManager.get(ISettingsManager.class);
+        final ISettings settingsManager = ServiceManager.get(ISettings.class);
         final String databaseUrl = settingsManager.getValue("databaseUrl");
         System.out.println(databaseUrl);
 
@@ -34,17 +33,15 @@ public class FileWritingTestCase1 {
         settingsManager.setValue("Testkey", "ImATestValue");
 
         // Part 4 | Disable SettingsManager and SettingsLoader < this is equivalent with the default termination
-        ServiceManager.disable(ISettingsManager.class);
-        ServiceManager.disable(ISettingsLoader.class);
+        ServiceManager.disable(ISettings.class);
 
 
         // Part 5 | Enabling SettingsManager and SettingsLoader < this is equivalent with the default init by master
-        ServiceManager.enable(ISettingsLoader.class);
-        ServiceManager.enable(ISettingsManager.class);
+        ServiceManager.enable(ISettings.class);
 
         // Part 6 | read customized key from file directly
         System.out.println((String)
-                ((ISettingsManager) ServiceManager.get(ISettingsManager.class)).getValue("Testkey"));
+                ((ISettings) ServiceManager.get(ISettings.class)).getValue("Testkey"));
     }
 
 }
