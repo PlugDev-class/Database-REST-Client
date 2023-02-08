@@ -32,8 +32,6 @@ public class DatabaseConnectTestCase {
         statement.execute("INSERT INTO `usercredentials`(`USERNAME`, `PASSWORD`) VALUES ('" +
                 System.nanoTime() + "','test')");
         statement.closeOnCompletion();
-
-        // It works!
     }
 
 }

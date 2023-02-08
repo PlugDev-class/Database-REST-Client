@@ -1,0 +1,13 @@
+Code    |   Explanation
+===========================================
+-4080   |   No network card found in Service ISecurityManager (= or SecurityManagerImplementation)
+
+
+
+Code    |   Possible solution
+===========================================
+-4080   |   Without any network connectivity the program isn't able to get the device-identifier (mac-address)
+            Maybe your network card isn't enabled or the virtual machine (either java or os) cannot get any information
+            about this component. In every case you should try to restart the program with admin access.
+            This error is associated with the device, not the program <3
+
