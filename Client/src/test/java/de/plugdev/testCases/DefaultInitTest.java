@@ -7,12 +7,12 @@ package de.plugdev.testCases;
  * Alle Rechte vorbehalten. @2023
  */
 
-import de.plugdev.client.ClientInstance;
+import de.plugdev.client.LibraryManager;
 
 public class DefaultInitTest {
 
     public static void main(String[] args) {
-        ClientInstance.preInitMasterBranchSynchronously();
+        LibraryManager.preInitMasterBranchSynchronously();
     }
 
 }

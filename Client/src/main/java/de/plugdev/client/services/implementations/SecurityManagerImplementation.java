@@ -55,7 +55,7 @@ public class SecurityManagerImplementation implements ISecurityManager {
         cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParameterSpec);
         final byte[] bytes = cipher.doFinal(array);
         String jsonFormat = new String(bytes);
-        return (T) GSON.fromJson(jsonFormat, t);
+        return GSON.fromJson(jsonFormat, t);
     }
 
     @Override

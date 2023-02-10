@@ -11,6 +11,7 @@
     <modules>
         <module>Client</module>
         <module>SharedModels</module>
+        <module>ExampleProject-Client</module>
     </modules>
 
     <properties>

@@ -13,7 +13,7 @@ import de.plugdev.services.ILog;
 import de.plugdev.services.LogManagerImplementation;
 import de.plugdev.services.ServiceManager;
 
-public class ClientInstance {
+public class LibraryManager {
     @Deprecated
     public static void main(String[] args) {
         preInitMasterBranchSynchronously();
@@ -28,6 +28,7 @@ public class ClientInstance {
         ServiceManager.add(IRestManager.class, new RestManagerImplementation());
         ServiceManager.add(ISecurityManager.class, new SecurityManagerImplementation());
         ServiceManager.add(IExceptionManager.class, new ExceptionManagerImplementation());
+        // TODO: Implement/Add IFileConfiguration.java
 
         ServiceManager.enableAll();
     }

@@ -7,7 +7,7 @@ package de.plugdev.testCases;
  * Alle Rechte vorbehalten. @2023
  */
 
-import de.plugdev.client.ClientInstance;
+import de.plugdev.client.LibraryManager;
 import de.plugdev.client.services.IDatabaseManager;
 import de.plugdev.services.ServiceManager;
 import lombok.SneakyThrows;
@@ -19,7 +19,7 @@ public class DatabaseConnectTestCase {
     @SneakyThrows
     public static void main(String[] args) {
         // Initialize the main library
-        ClientInstance.preInitMasterBranchSynchronously();
+        LibraryManager.preInitMasterBranchSynchronously();
 
         // Connect to database and check if it's connected
         final IDatabaseManager database = ServiceManager.get(IDatabaseManager.class);

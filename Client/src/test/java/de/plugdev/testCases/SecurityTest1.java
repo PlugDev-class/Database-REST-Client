@@ -7,7 +7,7 @@ package de.plugdev.testCases;
  * Alle Rechte vorbehalten. @2023
  */
 
-import de.plugdev.client.ClientInstance;
+import de.plugdev.client.LibraryManager;
 import de.plugdev.client.services.ISecurityManager;
 import de.plugdev.services.ServiceManager;
 
@@ -20,7 +20,7 @@ public class SecurityTest1 {
          * some unpredictable bugs cursing around this
          */
 
-        ClientInstance.preInitMasterBranchSynchronously();
+        LibraryManager.preInitMasterBranchSynchronously();
 
 
         long start = System.currentTimeMillis();

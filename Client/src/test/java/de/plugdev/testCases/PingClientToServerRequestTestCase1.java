@@ -5,16 +5,15 @@ package de.plugdev.testCases;/*
  * Alle Rechte vorbehalten. @2023
  */
 
-import de.plugdev.client.ClientInstance;
+import de.plugdev.client.LibraryManager;
 import de.plugdev.client.services.IRestManager;
 import de.plugdev.services.ServiceManager;
-import de.plugdev.web.RestResponse;
 
 public class PingClientToServerRequestTestCase1 {
 
     public static void main(String[] args) {
         // Start the master/dev instance
-        ClientInstance.preInitMasterBranchSynchronously();
+        LibraryManager.preInitMasterBranchSynchronously();
 
         // Building the rest manager
         final IRestManager restManager = ServiceManager.get(IRestManager.class);

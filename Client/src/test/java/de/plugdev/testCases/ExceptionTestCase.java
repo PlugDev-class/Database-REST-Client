@@ -7,7 +7,7 @@ package de.plugdev.testCases;
  * Alle Rechte vorbehalten. @2023
  */
 
-import de.plugdev.client.ClientInstance;
+import de.plugdev.client.LibraryManager;
 import de.plugdev.client.services.IExceptionManager;
 import de.plugdev.services.ServiceManager;
 
@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 public class ExceptionTestCase {
 
     public static void main(String[] args) {
-        ClientInstance.preInitMasterBranchSynchronously();
+        LibraryManager.preInitMasterBranchSynchronously();
 
         ExecutorService executorService = Executors.newFixedThreadPool(1);
         executorService.submit(() -> {

@@ -7,7 +7,7 @@ package de.plugdev.testCases;
  * Alle Rechte vorbehalten. @2023
  */
 
-import de.plugdev.client.ClientInstance;
+import de.plugdev.client.LibraryManager;
 import de.plugdev.client.services.ISettings;
 import de.plugdev.services.ServiceManager;
 
@@ -21,7 +21,7 @@ public class FileWritingTestCase {
          */
 
         // Part 1 | default master init  < this is equivalent with the default execution.
-        ClientInstance.preInitMasterBranchSynchronously();
+        LibraryManager.preInitMasterBranchSynchronously();
 
         // Part 2 | read default values from standardized keys
         final ISettings settingsManager = ServiceManager.get(ISettings.class);
